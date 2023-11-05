@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from .models import Sliders,Product, Staff,Contact
 
 
 # Create your views here.
@@ -8,7 +9,8 @@ def home(request):
 
 
 def shop(request):
-    return render(request, "shop.html",{ 'navbar': 'shop'})
+    data = Product.objects.all()
+    return render(request, "shop.html",{ 'navbar': 'shop', 'data':data})
 
 
 def about(request):
@@ -29,3 +31,22 @@ def cart(request):
 
 def checkout(request):
     return render(request, "checkout.html",{ 'navbar': 'checkout'})
+
+
+#sliders
+def sliders(request):
+    slides = Sliders.objects.all()
+    return render(request,"sliders.html", {'navbar':'sliders', 'slides':slides})
+
+def viewstaff(request):
+    staffs = Staff.objects.all()
+    return render(request, "about.html",{'staffs': staffs})
+
+def addComment(request):
+    if request.method =="POST":
+        fname = request.POST.get('fname')
+        lname = request.POST.get('lname')
+        email = request.POST.get('email')
+        message = request.POST.get('message')
+
+    return render(request, "about.html")
