@@ -14,9 +14,10 @@ urlpatterns = [
     path('contact/', views.contact, name="contact"),
     path('cart/',views.cart, name="cart"),
     path('checkout/', views.cart, name="checkout"),
-    path('sliders/', views.sliders, name="sliders"),
-    path('viewstaff/', views.viewstaff, name="viewstaff"),
-    path('addComment/',views.addComment, name="addComment")
+    #path('sliders/', views.sliders, name="sliders"),
+    #path('viewstaff/', views.viewstaff, name="viewstaff"),
+    path('addComment/',views.addComment, name="addComment"),
+    path('contentviews/', views.contentviews, name="content")
 
 
 ]

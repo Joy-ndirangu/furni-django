@@ -1,5 +1,6 @@
 from django.db import models
 
+
 # Create your models here.
 
 class Sliders(models.Model):
@@ -41,3 +42,14 @@ class Contact(models.Model):
 
     def __str__(self):
         return self.email
+
+class Blog(models.Model):
+    image = models.ImageField(upload_to="uploads/staff", default="uploads/staff.profile.jpg")
+    title = models.CharField(max_length=100, blank=False, null=False)
+    author = models.CharField(max_length=100, blank=False, null=False)
+    date = models.DateField(auto_now=True)
+    content = models.TextField( blank=False, null=True, max_length=50000)
+
+    def __str__(self):
+        return self.title
+
