@@ -77,7 +77,24 @@
                 </div>
               </div>
 
-              <form>
+                <!--alert message-->
+
+                 {% for message in messages %}
+
+                        <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                            {{ message }}
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+
+                 {% endfor %}
+
+
+                <!--form-->
+
+              <form action="{% url 'Shop:addComment' %}" method="POST" enctype="multipart/form-data">
+
+                  {% csrf_token %}
+
                 <div class="row">
                   <div class="col-6">
                     <div class="form-group">

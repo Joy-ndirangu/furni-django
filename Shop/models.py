@@ -37,7 +37,7 @@ class Contact(models.Model):
     fname = models.CharField(max_length=100, blank=False, null=False)
     lname = models.CharField(max_length=100, blank=False, null=False)
     email = models.EmailField(blank=False)
-    message = models.TextField( blank=False)
+    message = models.TextField( blank=False, null=True, max_length=500)
 
     def __str__(self):
         return self.email

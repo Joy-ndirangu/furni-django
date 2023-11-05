@@ -1,5 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import Sliders,Product, Staff,Contact
+from django.contrib import messages
 
 
 # Create your views here.
@@ -49,4 +50,12 @@ def addComment(request):
         email = request.POST.get('email')
         message = request.POST.get('message')
 
-    return render(request, "about.html")
+
+        query = Contact(fname=fname, lname=lname, email=email, message=message)
+        query.save()
+
+        messages.success(request, "Message sent successfully")
+
+        return redirect("/contact/")
+
+    return render(request, "contact.html")
